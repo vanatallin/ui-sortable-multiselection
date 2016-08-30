@@ -190,6 +190,7 @@ angular.module('ui.sortable.multiselection', [])
           return helper.append(elements);
         },
         start: function(e, ui) {
+          $('body').css('cursor', 'move');
           ui.item.sortableMultiSelect.sourceElement = ui.item.parent();
 
           var sourceModel = ui.item.sortable.sourceModel;
@@ -230,6 +231,7 @@ angular.module('ui.sortable.multiselection', [])
           }
         },
         remove: function(e, ui) {
+          $('body').css('cursor', 'auto');
           if (!ui.item.sortable.isCanceled()) {
             var ngModel = ui.item.sortable.sourceModel,
                 oldPosition = ui.item.sortable.index;
@@ -245,6 +247,7 @@ angular.module('ui.sortable.multiselection', [])
           }
         },
         stop: function (e, ui) {
+          $('body').css('cursor', 'auto');
           var sourceElement = ui.item.sortableMultiSelect.sourceElement || ui.item.parent();
           if (!ui.item.sortable.received &&
              // ('dropindex' in ui.item.sortable) &&
